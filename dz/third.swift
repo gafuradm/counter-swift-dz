@@ -1,10 +1,10 @@
 import UIKit
 import SnapKit
-class SecondViewController: UIViewController {
-    var name: String = ""
-    let nameTextField: UITextField = {
+class ThirdViewController: UIViewController {
+    var author: String = ""
+    let authorTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Ведите название счетчика"
+        textField.placeholder = "Ведите имя автора"
         return textField
     }()
     let saveButton: UIButton = {
@@ -16,18 +16,18 @@ class SecondViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Сменить название счетчика"
+        title = "Сменить имя автора"
         setupScene()
         makeConstraints()
     }
     private func setupScene() {
         view.backgroundColor = .systemBackground
-        view.addSubview(nameTextField)
+        view.addSubview(authorTextField)
         view.addSubview(saveButton)
-        nameTextField.text = name
+        authorTextField.text = author
     }
     private func makeConstraints() {
-        nameTextField.snp.makeConstraints {
+        authorTextField.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview().offset(-50)
             $0.width.equalToSuperview().multipliedBy(0.8)
@@ -39,8 +39,8 @@ class SecondViewController: UIViewController {
     }
     @objc private func saveButtonTapped() {
         if let viewController = navigationController?.viewControllers.first as? ViewController {
-            viewController.name = self.nameTextField.text ?? ""
-            viewController.nameLabel.text = "Счетчик \(self.nameTextField.text ?? "")"
+            viewController.author = self.authorTextField.text ?? ""
+            viewController.nameAuthor.text = "Автор \(self.authorTextField.text ?? "")"
         }
     }
 }
